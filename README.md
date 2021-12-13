@@ -55,7 +55,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 To start I pulled all of the JPEG files into Figma in order to lay them out where I could see them well. I typically use Figma to mark up the images and see exactly what components I need to build. It helps me visualize the app better and break it down into more bite sized chunks. I know I'm going to want to start mobile first so I place both of the mobile images at the front in order to make sure I foucus on those.
 
-![](./reference/components-breakdown-mobile.png)
+![](./public/reference/component-breakdown-mobile.png)
 
 From what I can see it looks like we have a few components to focus on:
 
