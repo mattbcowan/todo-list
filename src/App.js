@@ -8,6 +8,10 @@ const AppContainer = styled.div`
   width: 100%;
 `;
 
+const Container = styled.div`
+  padding: 1rem 2rem;
+`;
+
 const HeaderImage = styled.img`
   object-fit: cover;
   width: 100%;
@@ -20,17 +24,30 @@ const HeaderImage = styled.img`
 const StyledHeader = styled.header`
   position: relative;
   z-index: 2;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+`;
+
+const StyledH1 = styled.h1`
+  letter-spacing: 1rem;
+  padding-top: 1rem;
 `;
 
 function App() {
   return (
     <AppContainer>
       <HeaderImage src="./images/bg-mobile-dark.jpg" />
-      <StyledHeader>
-        <h1>TODO</h1>
-      </StyledHeader>
-      <main></main>
-      <footer></footer>
+      <Container>
+        <StyledHeader>
+          <StyledH1>TODO</StyledH1>
+          <span>
+            <img src="./images/icon-sun.svg" />
+          </span>
+        </StyledHeader>
+        <main></main>
+        <footer></footer>
+      </Container>
     </AppContainer>
   );
 }
