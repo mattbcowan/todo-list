@@ -1,0 +1,24 @@
+@import-normalize;
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+  * Remove the border on images inside links in IE 10-.
+  */
+
+img {
+  border-style: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}

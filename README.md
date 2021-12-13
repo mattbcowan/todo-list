@@ -65,6 +65,10 @@ From what I can see it looks like we have a few components to focus on:
 - Current To Do list (Seafoam)
 - Filter List (Orange)
 
+This makes everything seem much simpler to me and much more doable along with giving me a bit of structure for the project. So, let's get started with the dark mode version!
+
+I'll go ahead and hop into the style-guide provided and pull the font and weights so we can get our app looking nice. After that I'll pull the background color and go ahead and style the container. I will be using Styled Components in this so the CSS will be contained in the components.
+
 ### Built with
 
 - Semantic HTML5 markup
