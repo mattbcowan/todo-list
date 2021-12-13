@@ -28,10 +28,38 @@ const StyledHeader = styled.header`
   align-items: baseline;
   justify-content: space-between;
 `;
+const StyledMain = styled.main`
+  position: relative;
+  z-index: 2;
+`;
 
 const StyledH1 = styled.h1`
   letter-spacing: 1rem;
   padding-top: 1rem;
+`;
+
+const TaskContainer = styled.div`
+  display: flex;
+  padding: 1rem;
+  background-color: hsl(235, 24%, 19%);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+`;
+
+const TaskInput = styled.input`
+  color: #ffffff;
+  border: none;
+  background-color: transparent;
+
+  :focus {
+    outline: none;
+  }
+`;
+
+const CheckBox = styled.input`
+  border: 1px solid hsl(234, 39%, 85%);
+  background-color: transparent;
 `;
 
 function App() {
@@ -42,10 +70,15 @@ function App() {
         <StyledHeader>
           <StyledH1>TODO</StyledH1>
           <span>
-            <img src="./images/icon-sun.svg" />
+            <img src="./images/icon-sun.svg" alt="sun" />
           </span>
         </StyledHeader>
-        <main></main>
+        <StyledMain>
+          <TaskContainer>
+            <CheckBox type="checkbox" />
+            <TaskInput type="text" placeholder="Create a new todo..." />
+          </TaskContainer>
+        </StyledMain>
         <footer></footer>
       </Container>
     </AppContainer>
