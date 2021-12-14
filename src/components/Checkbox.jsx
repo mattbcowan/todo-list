@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledCheckbox = styled.label`
   font-size: 2rem;
   font-weight: bold;
-  line-height: 1.1;
+  line-height: 0.75;
   display: grid;
   grid-template-columns: 1em auto;
   gap: 0.5em;
@@ -26,6 +26,7 @@ const StyledInput = styled.input`
 
   &::before {
     content: "";
+    text-align: center;
     width: 0.9em;
     height: 0.9em;
     transform: scale(0);
@@ -35,6 +36,7 @@ const StyledInput = styled.input`
   }
 
   &:checked::before {
+      content: url('./images/icon-check.svg');
     transform: scale(1);
   }
 `;
