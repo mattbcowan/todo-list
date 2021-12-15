@@ -1,5 +1,14 @@
 import styled from "styled-components";
-import { Task } from "./components/";
+import { Task, TaskList } from "./components/";
+
+let data = [
+  "Complete online JavaScript course",
+  "Jog around the park 3x",
+  "10 minutes of meditation",
+  "Read for 1 hour",
+  "Pick up groceries",
+  "Complete Todo App on Frontend Mentor",
+];
 
 const AppContainer = styled.div`
   font-family: "Josefin Sans", sans-serif;
@@ -52,6 +61,7 @@ function App() {
         </StyledHeader>
         <StyledMain>
           <Task />
+          <TaskList data={data} />
         </StyledMain>
         <footer></footer>
       </Container>

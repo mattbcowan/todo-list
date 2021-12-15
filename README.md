@@ -77,6 +77,8 @@ Once everything is completed with the to-do input box everything is at a good po
 
 ![](./public/reference/mobile-view-part-1.png)
 
+Now that we have made the basic view of the components, let's move on to building out the list. This should be as simple as iterating over some data and putting it into the new Task component we made in order to build out a list of components. The only tricky thing I think will be handling the rounded edges but it should be a first-child and last-child style if I recall correctly.
+
 ### Built with
 
 - Semantic HTML5 markup

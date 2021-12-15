@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledCheckbox = styled.label`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   line-height: 0.75;
   display: grid;
