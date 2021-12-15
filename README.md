@@ -69,6 +69,14 @@ This makes everything seem much simpler to me and much more doable along with gi
 
 I'll go ahead and hop into the style-guide provided and pull the font and weights so we can get our app looking nice. After that I'll pull the background color and go ahead and style the container. I will be using Styled Components in this so the CSS will be contained in the components.
 
+After I'm done with the basic styling I'll work on the header portion. This is just a basic layout to get us rolling so I'll get the background image placed where it needs to be, then get the H1 in and styled. Once both of those are done it's onto the sun SVG. SVG's are a bit tricky still so I played around with it a bit and got it to the correct size and place.
+
+Now that the main portion of the header is placed (not yet functional) I'm working on getting the to-do input and button working. The main portion of this will be styling the checkbox. They are pretty unusual to style compared to other components, however there's usually a pretty quick work around that makes everything a lot easier. I'll look up what the most up to date way of styling the checkbox is and get that going. Once that's completed it's a matter of styling the text input and some padding for the whole component.
+
+Once everything is completed with the to-do input box everything is at a good point to start breaking into smaller chunks so the code will be easier to read. After that, we move on to the list portion of the app where we will be adding in some functionality along with some basic data, but for the moment let's take a quick break and see where we are at.
+
+![](./public/reference/mobile-view-part-1.png)
+
 ### Built with
 
 - Semantic HTML5 markup
