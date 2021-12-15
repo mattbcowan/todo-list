@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Checkbox from "./components/Checkbox";
+import { Task } from "./components/";
 
 const AppContainer = styled.div`
   font-family: "Josefin Sans", sans-serif;
@@ -39,25 +39,6 @@ const StyledH1 = styled.h1`
   padding-top: 1rem;
 `;
 
-const TaskContainer = styled.div`
-  display: flex;
-  padding: 1rem;
-  background-color: hsl(235, 24%, 19%);
-  color: #ffffff;
-  border: none;
-  border-radius: 0.5rem;
-`;
-
-const TaskInput = styled.input`
-  color: #ffffff;
-  border: none;
-  background-color: transparent;
-
-  :focus {
-    outline: none;
-  }
-`;
-
 function App() {
   return (
     <AppContainer>
@@ -70,10 +51,7 @@ function App() {
           </span>
         </StyledHeader>
         <StyledMain>
-          <TaskContainer>
-            <Checkbox />
-            <TaskInput type="text" placeholder="Create a new todo..." />
-          </TaskContainer>
+          <Task />
         </StyledMain>
         <footer></footer>
       </Container>

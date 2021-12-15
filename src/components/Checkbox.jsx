@@ -47,9 +47,6 @@ const Checkbox = () => {
       <StyledCheckbox>
         <StyledInput type="checkbox" name="checkbox" />
       </StyledCheckbox>
-      <StyledCheckbox>
-        <StyledInput type="checkbox" name="checkbox" checked />
-      </StyledCheckbox>
     </div>
   );
 };
