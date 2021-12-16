@@ -14,8 +14,8 @@ const SubmitLabel = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1rem;
-  height: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
   background-color: hsl(234, 11%, 52%);
   border-radius: 2rem;
   padding: 0.5rem;

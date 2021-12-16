@@ -51,11 +51,26 @@ const StyledH1 = styled.h1`
 
 function App() {
   const [value, setValue] = useState("");
+  const [list, setList] = useState(data);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    data.push(value);
+    let currentData = [...list];
+    currentData.push(value);
+    setList(currentData);
     setValue("");
+  };
+
+  const handleOnClick = (event) => {
+    event.preventDefault();
+    let currentData = [...list];
+    let index = currentData.indexOf(
+      `${event.currentTarget.parentElement.innerText}`
+    );
+    currentData.splice(index, 1);
+    setList(currentData);
+
+    // console.log(event.currentTarget.parentElement.innerText);
   };
 
   return (
@@ -74,7 +89,7 @@ function App() {
             onChange={(e) => setValue(e.target.value)}
             value={value}
           />
-          <TaskList data={data} />
+          <TaskList data={list} onClick={handleOnClick} />
         </StyledMain>
         <footer></footer>
       </Container>

@@ -42,19 +42,20 @@ const RemoveButton = styled.button`
   border: none;
   color: hsl(234, 11%, 52%);
   margin-left: 0.5rem;
+  cursor: pointer;
 `;
 
-const TaskList = ({ data }) => {
+const TaskList = ({ data, onClick }) => {
   return (
     <ListContainer>
-      {data.map((item) => {
+      {data.map((item, i) => {
         return (
-          <ListItem>
+          <ListItem key={i}>
             <ItemContainer>
               <Checkbox />
               <span>{item}</span>
             </ItemContainer>
-            <RemoveButton>
+            <RemoveButton onClick={onClick}>
               <img src="./images/icon-cross.svg" alt="close" />
             </RemoveButton>
           </ListItem>
