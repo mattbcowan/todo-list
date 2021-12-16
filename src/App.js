@@ -69,8 +69,6 @@ function App() {
     );
     currentData.splice(index, 1);
     setList(currentData);
-
-    // console.log(event.currentTarget.parentElement.innerText);
   };
 
   return (

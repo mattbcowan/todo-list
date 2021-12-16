@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Checkbox, TextInput } from "./";
+import { Checkbox } from "./";
+
+const CompletedTask = styled.span`
+  text-decoration: line-through;
+  color: hsl(234, 11%, 52%);
+`;
 
 const TaskContainer = styled.div`
   display: flex;
-  padding: 1rem;
-  background-color: hsl(235, 24%, 19%);
-  color: #ffffff;
-  border: none;
-  border-radius: 0.5rem;
+  align-items: center;
 `;
 
-const Task = () => {
+const Task = ({ text }) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    setChecked(!checked);
+  };
+
   return (
     <TaskContainer>
-      <Checkbox />
-      <TextInput />
+      <Checkbox checked={checked} onChange={handleChange} />
+      {checked ? <CompletedTask>{text}</CompletedTask> : <span>{text}</span>}
     </TaskContainer>
   );
 };

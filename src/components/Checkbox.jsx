@@ -37,17 +37,20 @@ const StyledInput = styled.input`
 
   &:checked::before {
       content: url('./images/icon-check.svg');
-    transform: scale(1);
+      transform: scale(1);
   }
 `;
 
-const Checkbox = () => {
+const Checkbox = ({ checked, onChange }) => {
   return (
-    <div>
-      <StyledCheckbox>
-        <StyledInput type="checkbox" name="checkbox" />
-      </StyledCheckbox>
-    </div>
+    <StyledCheckbox>
+      <StyledInput
+        type="checkbox"
+        name="checkbox"
+        checked={checked}
+        onChange={onChange}
+      />
+    </StyledCheckbox>
   );
 };
 

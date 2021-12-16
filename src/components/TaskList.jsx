@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Checkbox } from "./";
+import { Task } from "./";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -32,11 +32,6 @@ const ListItem = styled.li`
   padding: 1.5em 1em;
 `;
 
-const ItemContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 const RemoveButton = styled.button`
   background-color: transparent;
   border: none;
@@ -51,10 +46,7 @@ const TaskList = ({ data, onClick }) => {
       {data.map((item, i) => {
         return (
           <ListItem key={i}>
-            <ItemContainer>
-              <Checkbox />
-              <span>{item}</span>
-            </ItemContainer>
+            <Task text={item} />
             <RemoveButton onClick={onClick}>
               <img src="./images/icon-cross.svg" alt="close" />
             </RemoveButton>
@@ -63,7 +55,7 @@ const TaskList = ({ data, onClick }) => {
       })}
       <ListItem>
         <span>{data.length} Items Left</span>
-        <span>Clear Completed</span>
+        <button>Clear Completed</button>
       </ListItem>
     </ListContainer>
   );
