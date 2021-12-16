@@ -1,5 +1,6 @@
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Task, TaskList } from "./components/";
+import { AddTodo, TaskList } from "./components/";
 
 let data = [
   "Complete online JavaScript course",
@@ -49,6 +50,14 @@ const StyledH1 = styled.h1`
 `;
 
 function App() {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    data.push(value);
+    setValue("");
+  };
+
   return (
     <AppContainer>
       <HeaderImage src="./images/bg-mobile-dark.jpg" />
@@ -60,7 +69,11 @@ function App() {
           </span>
         </StyledHeader>
         <StyledMain>
-          <Task />
+          <AddTodo
+            handleSubmit={handleSubmit}
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+          />
           <TaskList data={data} />
         </StyledMain>
         <footer></footer>

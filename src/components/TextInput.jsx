@@ -15,8 +15,15 @@ const TaskInput = styled.input`
   }
 `;
 
-const TextInput = () => {
-  return <TaskInput type="text" placeholder="Create a new todo..." />;
+const TextInput = ({ value, onChange, placeholder }) => {
+  return (
+    <TaskInput
+      type="text"
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
+  );
 };
 
 export default TextInput;

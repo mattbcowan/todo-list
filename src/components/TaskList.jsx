@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Checkbox, TextInput } from "./";
+import { Checkbox } from "./";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -20,6 +20,7 @@ const ListContainer = styled.ul`
 
   li:last-child {
     border: none;
+    color: hsl(234, 11%, 52%);
   }
 `;
 
@@ -60,7 +61,7 @@ const TaskList = ({ data }) => {
         );
       })}
       <ListItem>
-        <span>5 Items Left</span>
+        <span>{data.length} Items Left</span>
         <span>Clear Completed</span>
       </ListItem>
     </ListContainer>
