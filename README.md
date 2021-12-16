@@ -79,6 +79,10 @@ Once everything is completed with the to-do input box everything is at a good po
 
 Now that we have made the basic view of the components, let's move on to building out the list. This should be as simple as iterating over some data and putting it into the new Task component we made in order to build out a list of components. The only tricky thing I think will be handling the rounded edges but it should be a first-child and last-child style if I recall correctly.
 
+Building out the list was pretty straight forward (at least currently, this may change if/when I add drag and drop functionality). It was pretty much what I expected, iterate over data and fill in the blanks. I did notice that the create todo and the marking off of a list item were very similar and it wasn't apparent where to tap/click to add a todo so I changed the look of the button on the input a little bit to make it obvious. Once that was done I did a little refactoring to get the data flowing better and to allow the list to be altered. Once that was completed we were getting very close to the finished overall look and the only thing left was some minor functionality pieces.
+
+![](./public/reference/mobile-view-part-2.png)
+
 ### Built with
 
 - Semantic HTML5 markup
