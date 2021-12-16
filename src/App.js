@@ -30,7 +30,6 @@ const StyledMain = styled.main`
 
 function App() {
   const [value, setValue] = useState("");
-
   const [data, setData] = useState([]);
 
   const getData = async () => {
@@ -59,6 +58,7 @@ function App() {
   //   setList(currentData);
   //   setValue("");
   // };
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -74,7 +74,7 @@ function App() {
             onChange={(e) => setValue(e.target.value)}
             value={value}
           />
-          <TaskList />
+          <TaskList data={data} />
         </StyledMain>
         <footer></footer>
       </Container>

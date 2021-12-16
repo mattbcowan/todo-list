@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Task } from "./";
 
@@ -55,28 +54,7 @@ const handleOnClick = (event) => {
   console.log("Clicked");
 };
 
-const TaskList = () => {
-  const [data, setData] = useState([]);
-
-  const getData = async () => {
-    await fetch("data.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((myJson) => {
-        setData(myJson);
-      });
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+const TaskList = ({ data }) => {
   return (
     <ListContainer>
       {data &&
