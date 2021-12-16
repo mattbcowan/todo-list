@@ -1,15 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { AddTodo, TaskList } from "./components/";
-
-let data = [
-  "Complete online JavaScript course",
-  "Jog around the park 3x",
-  "10 minutes of meditation",
-  "Read for 1 hour",
-  "Pick up groceries",
-  "Complete Todo App on Frontend Mentor",
-];
+import { AddTodo, Header, TaskList } from "./components/";
 
 const AppContainer = styled.div`
   font-family: "Josefin Sans", sans-serif;
@@ -32,62 +23,58 @@ const HeaderImage = styled.img`
   left: 0;
 `;
 
-const StyledHeader = styled.header`
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-`;
 const StyledMain = styled.main`
   position: relative;
   z-index: 2;
 `;
 
-const StyledH1 = styled.h1`
-  letter-spacing: 1rem;
-  padding-top: 1rem;
-`;
-
 function App() {
   const [value, setValue] = useState("");
-  const [list, setList] = useState(data);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    let currentData = [...list];
-    currentData.push(value);
-    setList(currentData);
-    setValue("");
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    await fetch("data.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((myJson) => {
+        setData(myJson);
+      });
   };
 
-  const handleOnClick = (event) => {
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   let currentData = [...list];
+  //   currentData.push(value);
+  //   setList(currentData);
+  //   setValue("");
+  // };
+  const handleSubmit = (event) => {
     event.preventDefault();
-    let currentData = [...list];
-    let index = currentData.indexOf(
-      `${event.currentTarget.parentElement.innerText}`
-    );
-    currentData.splice(index, 1);
-    setList(currentData);
   };
 
   return (
     <AppContainer>
       <HeaderImage src="./images/bg-mobile-dark.jpg" />
       <Container>
-        <StyledHeader>
-          <StyledH1>TODO</StyledH1>
-          <span>
-            <img src="./images/icon-sun.svg" alt="sun" />
-          </span>
-        </StyledHeader>
+        <Header />
         <StyledMain>
           <AddTodo
             handleSubmit={handleSubmit}
             onChange={(e) => setValue(e.target.value)}
             value={value}
           />
-          <TaskList data={list} onClick={handleOnClick} />
+          <TaskList />
         </StyledMain>
         <footer></footer>
       </Container>

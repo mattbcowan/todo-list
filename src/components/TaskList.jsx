@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Task } from "./";
 
@@ -40,19 +40,57 @@ const RemoveButton = styled.button`
   cursor: pointer;
 `;
 
-const TaskList = ({ data, onClick }) => {
+// const handleOnClick = (event) => {
+//   event.preventDefault();
+//   let currentData = [...list];
+//   let index = currentData.indexOf(
+//     `${event.currentTarget.parentElement.innerText}`
+//   );
+//   currentData.splice(index, 1);
+//   setList(currentData);
+// };
+
+const handleOnClick = (event) => {
+  event.preventDefault();
+  console.log("Clicked");
+};
+
+const TaskList = () => {
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    await fetch("data.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((myJson) => {
+        setData(myJson);
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <ListContainer>
-      {data.map((item, i) => {
-        return (
-          <ListItem key={i}>
-            <Task text={item} />
-            <RemoveButton onClick={onClick}>
-              <img src="./images/icon-cross.svg" alt="close" />
-            </RemoveButton>
-          </ListItem>
-        );
-      })}
+      {data &&
+        data.length > 0 &&
+        data[0].tasks.map((item, i) => {
+          return (
+            <ListItem key={i}>
+              <Task text={item.value} />
+              <RemoveButton onClick={handleOnClick}>
+                <img src="./images/icon-cross.svg" alt="close" />
+              </RemoveButton>
+            </ListItem>
+          );
+        })}
       <ListItem>
         <span>{data.length} Items Left</span>
         <button>Clear Completed</button>
