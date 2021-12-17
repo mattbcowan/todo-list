@@ -1,4 +1,6 @@
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import { GlobalContext } from "../context/GlobalState";
 import { TextInput } from ".";
 
 const TaskContainer = styled.form`
@@ -33,7 +35,22 @@ const SubmitButton = styled.input`
   width: 1px;
 `;
 
-const AddTodo = ({ handleSubmit, onChange, value }) => {
+const AddTodo = () => {
+  const [value, setValue] = useState("");
+  const { addTask } = useContext(GlobalContext);
+
+  const handleSubmit = (event) => {
+    if (value.length) {
+      event.preventDefault();
+      addTask(value);
+      setValue("");
+    }
+  };
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
   return (
     <TaskContainer onSubmit={handleSubmit}>
       <SubmitLabel htmlFor="addTodo">
@@ -47,7 +64,7 @@ const AddTodo = ({ handleSubmit, onChange, value }) => {
       />
       <TextInput
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         placeholder="Create a new todo..."
       />
     </TaskContainer>

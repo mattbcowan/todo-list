@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { GlobalContext } from "../context/GlobalState";
 import { Task } from "./";
+import RemoveTodo from "./RemoveTodo";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -31,47 +34,25 @@ const ListItem = styled.li`
   padding: 1.5em 1em;
 `;
 
-const RemoveButton = styled.button`
-  background-color: transparent;
-  border: none;
-  color: hsl(234, 11%, 52%);
-  margin-left: 0.5rem;
-  cursor: pointer;
-`;
+const TaskList = () => {
+  const { tasks } = useContext(GlobalContext);
 
-const handleButtonClick = (data) => {
-  console.log(data);
-};
+  const tasksMarkup = tasks.map((item, index) => (
+    <ListItem key={index}>
+      <Task text={item} />
+      <RemoveTodo item={item} />
+    </ListItem>
+  ));
 
-const TaskList = ({ data, handleOnClick, handleChecked }) => {
   return (
     <ListContainer>
-      {data &&
-        data.length > 0 &&
-        data.map((item, i) => {
-          return (
-            <ListItem key={i}>
-              <Task
-                text={item.value}
-                checked={item.completed}
-                handleChecked={handleChecked}
-              />
-              <RemoveButton onClick={handleOnClick}>
-                <img src="./images/icon-cross.svg" alt="close" />
-              </RemoveButton>
-            </ListItem>
-          );
-        })}
+      {tasksMarkup}
       <ListItem>
-        <span>{data.length} Items Left</span>
-        <button onClick={() => handleButtonClick(data)}>Clear Completed</button>
+        <span>{tasks.length} Items Left</span>
+        <button onClick={() => console.log("clicked")}>Clear Completed</button>
       </ListItem>
     </ListContainer>
   );
-};
-
-TaskList.defaultProps = {
-  data: [],
 };
 
 export default TaskList;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { AddTodo, Header, TaskList } from "./components/";
+import { GlobalProvider } from "./context/GlobalState";
 
 const AppContainer = styled.div`
   font-family: "Josefin Sans", sans-serif;
@@ -29,9 +30,7 @@ const StyledMain = styled.main`
 `;
 
 function App() {
-  const [value, setValue] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [isDarkmode, setIsDarkmode] = useState(true);
 
   const getData = async () => {
     await fetch("data.json", {
@@ -45,7 +44,6 @@ function App() {
       })
       .then((myJson) => {
         setTasks(myJson.tasks);
-        setIsDarkmode(myJson.darkmode);
       });
   };
 
@@ -53,57 +51,19 @@ function App() {
     getData();
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setTasks((current) => [...current, { value: value, completed: false }]);
-    setValue("");
-  };
-
-  const handleOnClick = (event) => {
-    event.preventDefault();
-    let currentData = [...tasks];
-    let index = currentData.find(
-      (task) => task.value === `${event.currentTarget.parentElement.innerText}`
-    );
-    currentData.splice(currentData.indexOf(index), 1);
-    setTasks(currentData);
-  };
-
-  const handleChecked = (event) => {
-    event.preventDefault();
-    event.preventDefault();
-    let currentData = [...tasks];
-    let index = currentData.find(
-      (task) =>
-        task.value ===
-        `${event.currentTarget.parentElement.parentElement.lastChild.innerText}`
-    );
-    let currentIndex = currentData.indexOf(index);
-
-    currentData[currentIndex].completed = !currentData[currentIndex].completed;
-    setTasks(currentData);
-    // console.log(currentData[currentData.indexOf(index)]);
-  };
-
   return (
     <AppContainer>
-      <HeaderImage src="./images/bg-mobile-dark.jpg" />
-      <Container>
-        <Header />
-        <StyledMain>
-          <AddTodo
-            handleSubmit={handleSubmit}
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
-          />
-          <TaskList
-            data={tasks}
-            handleOnClick={handleOnClick}
-            handleChecked={handleChecked}
-          />
-        </StyledMain>
-        <footer></footer>
-      </Container>
+      <GlobalProvider>
+        <HeaderImage src="./images/bg-mobile-dark.jpg" />
+        <Container>
+          <Header />
+          <StyledMain>
+            <AddTodo />
+            <TaskList data={tasks} />
+          </StyledMain>
+          <footer></footer>
+        </Container>
+      </GlobalProvider>
     </AppContainer>
   );
 }
