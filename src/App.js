@@ -30,7 +30,8 @@ const StyledMain = styled.main`
 
 function App() {
   const [value, setValue] = useState("");
-  const [data, setData] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [isDarkmode, setIsDarkmode] = useState(true);
 
   const getData = async () => {
     await fetch("data.json", {
@@ -43,7 +44,8 @@ function App() {
         return response.json();
       })
       .then((myJson) => {
-        setData(myJson);
+        setTasks(myJson.tasks);
+        setIsDarkmode(myJson.darkmode);
       });
   };
 
@@ -51,16 +53,36 @@ function App() {
     getData();
   }, []);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   let currentData = [...list];
-  //   currentData.push(value);
-  //   setList(currentData);
-  //   setValue("");
-  // };
-
   const handleSubmit = (event) => {
     event.preventDefault();
+    setTasks((current) => [...current, { value: value, completed: false }]);
+    setValue("");
+  };
+
+  const handleOnClick = (event) => {
+    event.preventDefault();
+    let currentData = [...tasks];
+    let index = currentData.find(
+      (task) => task.value === `${event.currentTarget.parentElement.innerText}`
+    );
+    currentData.splice(currentData.indexOf(index), 1);
+    setTasks(currentData);
+  };
+
+  const handleChecked = (event) => {
+    event.preventDefault();
+    event.preventDefault();
+    let currentData = [...tasks];
+    let index = currentData.find(
+      (task) =>
+        task.value ===
+        `${event.currentTarget.parentElement.parentElement.lastChild.innerText}`
+    );
+    let currentIndex = currentData.indexOf(index);
+
+    currentData[currentIndex].completed = !currentData[currentIndex].completed;
+    setTasks(currentData);
+    // console.log(currentData[currentData.indexOf(index)]);
   };
 
   return (
@@ -74,7 +96,11 @@ function App() {
             onChange={(e) => setValue(e.target.value)}
             value={value}
           />
-          <TaskList data={data} />
+          <TaskList
+            data={tasks}
+            handleOnClick={handleOnClick}
+            handleChecked={handleChecked}
+          />
         </StyledMain>
         <footer></footer>
       </Container>

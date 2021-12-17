@@ -1,32 +1,30 @@
-[
-  {
-    "_id": "61bbb2a23f632b4f98971873",
-    "tasks": [
-      {
-        "value": "Complete online JavaScript course",
-        "completed": false
-      },
-      {
-        "value": "Jog around the park 3x",
-        "completed": false
-      },
-      {
-        "value": "10 minutes of meditation",
-        "completed": false
-      },
-      {
-        "value": "Read for 1 hour",
-        "completed": false
-      },
-      {
-        "value": "Pick up groceries",
-        "completed": false
-      },
-      {
-        "value": "Complete Todo App on Frontend Mentor",
-        "completed": false
-      }
-    ],
-    "darkmode": true
-  }
-]
+{
+  "_id": "61bbb2a23f632b4f98971873",
+  "tasks": [
+    {
+      "value": "Complete online JavaScript course",
+      "completed": false
+    },
+    {
+      "value": "Jog around the park 3x",
+      "completed": false
+    },
+    {
+      "value": "10 minutes of meditation",
+      "completed": false
+    },
+    {
+      "value": "Read for 1 hour",
+      "completed": false
+    },
+    {
+      "value": "Pick up groceries",
+      "completed": false
+    },
+    {
+      "value": "Complete Todo App on Frontend Mentor",
+      "completed": false
+    }
+  ],
+  "darkmode": true
+}

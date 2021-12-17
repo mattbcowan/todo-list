@@ -39,30 +39,23 @@ const RemoveButton = styled.button`
   cursor: pointer;
 `;
 
-// const handleOnClick = (event) => {
-//   event.preventDefault();
-//   let currentData = [...list];
-//   let index = currentData.indexOf(
-//     `${event.currentTarget.parentElement.innerText}`
-//   );
-//   currentData.splice(index, 1);
-//   setList(currentData);
-// };
-
-const handleOnClick = (event) => {
-  event.preventDefault();
-  console.log("Clicked");
+const handleButtonClick = (data) => {
+  console.log(data);
 };
 
-const TaskList = ({ data }) => {
+const TaskList = ({ data, handleOnClick, handleChecked }) => {
   return (
     <ListContainer>
       {data &&
         data.length > 0 &&
-        data[0].tasks.map((item, i) => {
+        data.map((item, i) => {
           return (
             <ListItem key={i}>
-              <Task text={item.value} />
+              <Task
+                text={item.value}
+                checked={item.completed}
+                handleChecked={handleChecked}
+              />
               <RemoveButton onClick={handleOnClick}>
                 <img src="./images/icon-cross.svg" alt="close" />
               </RemoveButton>
@@ -71,10 +64,14 @@ const TaskList = ({ data }) => {
         })}
       <ListItem>
         <span>{data.length} Items Left</span>
-        <button>Clear Completed</button>
+        <button onClick={() => handleButtonClick(data)}>Clear Completed</button>
       </ListItem>
     </ListContainer>
   );
+};
+
+TaskList.defaultProps = {
+  data: [],
 };
 
 export default TaskList;
