@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Checkbox } from "./";
 
@@ -11,11 +12,17 @@ const TaskContainer = styled.div`
   align-items: center;
 `;
 
-const Task = ({ text, checked, handleChecked }) => {
+const Task = ({ text }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <TaskContainer>
-      <Checkbox checked={checked} onChange={handleChecked} />
-      {checked ? <CompletedTask>{text}</CompletedTask> : <span>{text}</span>}
+      <Checkbox onChange={handleChange} />
+      {isChecked ? <CompletedTask>{text}</CompletedTask> : <span>{text}</span>}
     </TaskContainer>
   );
 };
