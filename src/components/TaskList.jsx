@@ -68,6 +68,16 @@ const TaskList = () => {
     updateTask(newTaskList);
   };
 
+  const ItemsLeft = (items) => {
+    if (items.length > 1) {
+      return `${items.length} Items Left`;
+    } else if (items.length === 1) {
+      return "1 Item Left";
+    } else {
+      return "You're all done!";
+    }
+  };
+
   const handleClearComplete = (list) => {
     list.forEach((item) => clearCompletedTasks(item));
   };
@@ -87,7 +97,9 @@ const TaskList = () => {
         </ListItem>
       ))}
       <ListItem>
-        <span>{tasks.length} Items Left</span>
+        <span>
+          {ItemsLeft(tasks.filter((item) => item.isChecked === false))}
+        </span>
         <ClearButton onClick={() => handleClearComplete(tasks)}>
           Clear Completed
         </ClearButton>
