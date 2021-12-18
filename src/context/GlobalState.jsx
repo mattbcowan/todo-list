@@ -34,9 +34,22 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function clearCompletedTasks(item) {
+    dispatch({
+      type: "CLEAR_COMPLETED_TASKS",
+      payload: item,
+    });
+  }
+
   return (
     <GlobalContext.Provider
-      value={{ tasks: state.tasks, addTask, removeTask, updateTask }}
+      value={{
+        tasks: state.tasks,
+        addTask,
+        removeTask,
+        updateTask,
+        clearCompletedTasks,
+      }}
     >
       {children}
     </GlobalContext.Provider>

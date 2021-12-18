@@ -45,7 +45,7 @@ const TaskText = styled.span`
 `;
 
 const TaskList = () => {
-  const { tasks, updateTask } = useContext(GlobalContext);
+  const { tasks, updateTask, clearCompletedTasks } = useContext(GlobalContext);
 
   const handleChange = (id) => {
     const newTaskList = tasks.map((item) => {
@@ -59,6 +59,10 @@ const TaskList = () => {
       return item;
     });
     updateTask(newTaskList);
+  };
+
+  const handleClearComplete = (list) => {
+    list.forEach((item) => clearCompletedTasks(item));
   };
 
   return (
@@ -77,7 +81,9 @@ const TaskList = () => {
       ))}
       <ListItem>
         <span>{tasks.length} Items Left</span>
-        <button onClick={() => console.log(tasks)}>Clear Completed</button>
+        <button onClick={() => handleClearComplete(tasks)}>
+          Clear Completed
+        </button>
       </ListItem>
     </ListContainer>
   );
