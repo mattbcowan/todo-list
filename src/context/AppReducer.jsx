@@ -14,7 +14,7 @@ const AppReducer = (state, action) => {
       };
     case "CLEAR_COMPLETED_TASKS":
       return {
-        tasks: state.tasks.filter((item) => item.isChecked !== true),
+        tasks: state.tasks.filter((item) => item.isChecked === false),
       };
     default:
       return state;

@@ -26,6 +26,13 @@ const ListContainer = styled.ul`
   }
 `;
 
+const ClearButton = styled.button`
+  background: transparent;
+  border: none;
+  color: hsl(234, 11%, 52%);
+  cursor: pointer;
+`;
+
 const ListItem = styled.li`
   display: flex;
   align-items: center;
@@ -81,9 +88,9 @@ const TaskList = () => {
       ))}
       <ListItem>
         <span>{tasks.length} Items Left</span>
-        <button onClick={() => handleClearComplete(tasks)}>
+        <ClearButton onClick={() => handleClearComplete(tasks)}>
           Clear Completed
-        </button>
+        </ClearButton>
       </ListItem>
     </ListContainer>
   );
