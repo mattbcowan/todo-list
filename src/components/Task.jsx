@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
+import { GlobalContext } from "../context/GlobalState";
 import { Checkbox } from "./";
 
 const CompletedTask = styled.span`
@@ -12,17 +13,23 @@ const TaskContainer = styled.div`
   align-items: center;
 `;
 
-const Task = ({ text }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const Task = (props) => {
+  const { item } = props;
+
+  const { updateTask } = useContext(GlobalContext);
 
   const handleChange = () => {
-    setIsChecked(!isChecked);
+    console.log(item);
   };
 
   return (
     <TaskContainer>
-      <Checkbox onChange={handleChange} />
-      {isChecked ? <CompletedTask>{text}</CompletedTask> : <span>{text}</span>}
+      <Checkbox onChange={handleChange} checked={item.isChecked} />
+      {item.isChecked ? (
+        <CompletedTask>{item.text}</CompletedTask>
+      ) : (
+        <span>{item.text}</span>
+      )}
     </TaskContainer>
   );
 };

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { GlobalContext } from "../context/GlobalState";
-import { Task } from "./";
+import Checkbox from "./Checkbox";
 import RemoveTodo from "./RemoveTodo";
 
 const ListContainer = styled.ul`
@@ -34,22 +34,50 @@ const ListItem = styled.li`
   padding: 1.5em 1em;
 `;
 
-const TaskList = () => {
-  const { tasks } = useContext(GlobalContext);
+const TaskContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-  const tasksMarkup = tasks.map((item, index) => (
-    <ListItem key={index}>
-      <Task text={item} />
-      <RemoveTodo item={item} />
-    </ListItem>
-  ));
+const TaskText = styled.span`
+  text-decoration: ${(props) => (props.isChecked ? "line-through" : "none")};
+  color: ${(props) => (props.isChecked ? "hsl(234, 11%, 52%)" : "#ffffff")};
+`;
+
+const TaskList = () => {
+  const { tasks, updateTask } = useContext(GlobalContext);
+
+  const handleChange = (id) => {
+    const newTaskList = tasks.map((item) => {
+      if (item.id === id) {
+        const updatedItem = {
+          ...item,
+          isChecked: !item.isChecked,
+        };
+        return updatedItem;
+      }
+      return item;
+    });
+    updateTask(newTaskList);
+  };
 
   return (
     <ListContainer>
-      {tasksMarkup}
+      {tasks.map((item) => (
+        <ListItem key={item.id}>
+          <TaskContainer>
+            <Checkbox
+              onChange={() => handleChange(item.id)}
+              checked={item.isChecked}
+            />
+            <TaskText isChecked={item.isChecked}>{item.text}</TaskText>
+          </TaskContainer>
+          <RemoveTodo item={item} />
+        </ListItem>
+      ))}
       <ListItem>
         <span>{tasks.length} Items Left</span>
-        <button onClick={() => console.log("clicked")}>Clear Completed</button>
+        <button onClick={() => console.log(tasks)}>Clear Completed</button>
       </ListItem>
     </ListContainer>
   );

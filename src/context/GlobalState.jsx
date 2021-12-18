@@ -27,8 +27,17 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function updateTask(item) {
+    dispatch({
+      type: "UPDATE_TASK",
+      payload: item,
+    });
+  }
+
   return (
-    <GlobalContext.Provider value={{ tasks: state.tasks, addTask, removeTask }}>
+    <GlobalContext.Provider
+      value={{ tasks: state.tasks, addTask, removeTask, updateTask }}
+    >
       {children}
     </GlobalContext.Provider>
   );

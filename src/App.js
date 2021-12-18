@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { AddTodo, Header, TaskList } from "./components/";
 import { GlobalProvider } from "./context/GlobalState";
@@ -30,27 +29,6 @@ const StyledMain = styled.main`
 `;
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-
-  const getData = async () => {
-    await fetch("data.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((myJson) => {
-        setTasks(myJson.tasks);
-      });
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
   return (
     <AppContainer>
       <GlobalProvider>
@@ -59,7 +37,7 @@ function App() {
           <Header />
           <StyledMain>
             <AddTodo />
-            <TaskList data={tasks} />
+            <TaskList />
           </StyledMain>
           <footer></footer>
         </Container>

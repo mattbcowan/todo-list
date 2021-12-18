@@ -35,20 +35,28 @@ const SubmitButton = styled.input`
   width: 1px;
 `;
 
+const generateId = () => {
+  return Math.floor(1000 + Math.random() * 9000);
+};
+
 const AddTodo = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState({
+    text: "",
+    isChecked: false,
+    id: generateId(),
+  });
   const { addTask } = useContext(GlobalContext);
 
   const handleSubmit = (event) => {
-    if (value.length) {
+    if (value.text.length) {
       event.preventDefault();
       addTask(value);
-      setValue("");
+      setValue({ text: "", isChecked: false, id: generateId() });
     }
   };
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setValue({ ...value, text: event.target.value });
   };
 
   return (
@@ -63,7 +71,7 @@ const AddTodo = () => {
         name="add-to-do"
       />
       <TextInput
-        value={value}
+        value={value.text}
         onChange={handleChange}
         placeholder="Create a new todo..."
       />
