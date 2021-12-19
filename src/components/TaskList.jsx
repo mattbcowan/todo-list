@@ -1,8 +1,12 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import { sortableContainer } from "react-sortable-hoc";
+import { arrayMoveImmutable } from "array-move";
 import { GlobalContext } from "../context/GlobalState";
 import Checkbox from "./Checkbox";
 import RemoveTodo from "./RemoveTodo";
+import SortableListItem from "./SortableListItem";
+import ListFooter from "./ListFooter";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -16,29 +20,9 @@ const ListContainer = styled.ul`
   list-style: none;
   margin-top: 1em;
 
-  li {
-    border-bottom: 1px solid hsl(234, 11%, 52%);
-  }
-
   li:last-child {
-    border: none;
     color: hsl(234, 11%, 52%);
   }
-`;
-
-const ClearButton = styled.button`
-  background: transparent;
-  border: none;
-  color: hsl(234, 11%, 52%);
-  cursor: pointer;
-`;
-
-const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  padding: 1.5em 1em;
 `;
 
 const TaskContainer = styled.div`
@@ -52,7 +36,12 @@ const TaskText = styled.span`
 `;
 
 const TaskList = () => {
-  const { tasks, updateTask, clearCompletedTasks } = useContext(GlobalContext);
+  const { tasks, updateTask } = useContext(GlobalContext);
+
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    let newArray = arrayMoveImmutable(tasks, oldIndex, newIndex);
+    updateTask(newArray);
+  };
 
   const handleChange = (id) => {
     const newTaskList = tasks.map((item) => {
@@ -68,42 +57,27 @@ const TaskList = () => {
     updateTask(newTaskList);
   };
 
-  const ItemsLeft = (items) => {
-    if (items.length > 1) {
-      return `${items.length} Items Left`;
-    } else if (items.length === 1) {
-      return "1 Item Left";
-    } else {
-      return "You're all done!";
-    }
-  };
-
-  const handleClearComplete = (list) => {
-    list.forEach((item) => clearCompletedTasks(item));
-  };
+  const SortableContainer = sortableContainer(({ children }) => {
+    return <ListContainer>{children}</ListContainer>;
+  });
 
   return (
     <ListContainer>
-      {tasks.map((item) => (
-        <ListItem key={item.id}>
-          <TaskContainer>
-            <Checkbox
-              onChange={() => handleChange(item.id)}
-              checked={item.isChecked}
-            />
-            <TaskText isChecked={item.isChecked}>{item.text}</TaskText>
-          </TaskContainer>
-          <RemoveTodo item={item} />
-        </ListItem>
-      ))}
-      <ListItem>
-        <span>
-          {ItemsLeft(tasks.filter((item) => item.isChecked === false))}
-        </span>
-        <ClearButton onClick={() => handleClearComplete(tasks)}>
-          Clear Completed
-        </ClearButton>
-      </ListItem>
+      <SortableContainer onSortEnd={onSortEnd}>
+        {tasks.map((item, index) => (
+          <SortableListItem key={item.id} index={index}>
+            <TaskContainer>
+              <Checkbox
+                onChange={() => handleChange(item.id)}
+                checked={item.isChecked}
+              />
+              <TaskText isChecked={item.isChecked}>{item.text}</TaskText>
+            </TaskContainer>
+            <RemoveTodo item={item} />
+          </SortableListItem>
+        ))}
+      </SortableContainer>
+      <ListFooter tasks={tasks} />
     </ListContainer>
   );
 };
