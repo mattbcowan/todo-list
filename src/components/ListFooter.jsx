@@ -2,12 +2,13 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { GlobalContext } from "../context/GlobalState";
 
-const ListItem = styled.li`
+const ListItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.9rem;
   padding: 1.5em 1em;
+  color: hsl(234, 11%, 52%);
 `;
 
 const ClearButton = styled.button`

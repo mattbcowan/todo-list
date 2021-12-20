@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AddTodo, Header, TaskList } from "./components/";
+import { AddTodo, Header, Footer, TaskList } from "./components/";
 import { GlobalProvider } from "./context/GlobalState";
 
 const AppContainer = styled.div`
@@ -39,8 +39,8 @@ function App() {
             <AddTodo />
             <TaskList />
           </StyledMain>
-          <footer></footer>
         </Container>
+        <Footer />
       </GlobalProvider>
     </AppContainer>
   );

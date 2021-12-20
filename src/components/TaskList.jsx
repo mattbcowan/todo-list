@@ -8,21 +8,21 @@ import RemoveTodo from "./RemoveTodo";
 import SortableListItem from "./SortableListItem";
 import ListFooter from "./ListFooter";
 
+const Container = styled.div`
+  background-color: hsl(235, 24%, 19%);
+  border-radius: 0.5em;
+`;
+
 const ListContainer = styled.ul`
   display: flex;
   flex-direction: column;
   padding: 0;
   margin: 0;
-  background-color: hsl(235, 24%, 19%);
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
   list-style: none;
   margin-top: 1em;
-
-  li:last-child {
-    color: hsl(234, 11%, 52%);
-  }
 `;
 
 const TaskContainer = styled.div`
@@ -62,7 +62,7 @@ const TaskList = () => {
   });
 
   return (
-    <ListContainer>
+    <Container>
       <SortableContainer onSortEnd={onSortEnd}>
         {tasks.map((item, index) => (
           <SortableListItem key={item.id} index={index}>
@@ -78,7 +78,7 @@ const TaskList = () => {
         ))}
       </SortableContainer>
       <ListFooter tasks={tasks} />
-    </ListContainer>
+    </Container>
   );
 };
 
