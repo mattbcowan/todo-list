@@ -14,11 +14,15 @@ const StyledH1 = styled.h1`
 `;
 
 const Header = () => {
+  const handleOnClick = () => {
+    console.log("Clicked");
+  };
+
   return (
     <StyledHeader>
       <StyledH1>TODO</StyledH1>
       <span>
-        <img src="./images/icon-sun.svg" alt="sun" />
+        <img src="./images/icon-sun.svg" alt="sun" onClick={handleOnClick} />
       </span>
     </StyledHeader>
   );

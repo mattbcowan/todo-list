@@ -16,7 +16,8 @@ const RemoveTodo = (props) => {
 
   const { removeTask } = useContext(GlobalContext);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.stopPropagation();
     removeTask(item);
   };
 
