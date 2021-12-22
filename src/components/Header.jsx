@@ -13,11 +13,7 @@ const StyledH1 = styled.h1`
   padding-top: 1rem;
 `;
 
-const Header = () => {
-  const handleOnClick = () => {
-    console.log("Clicked");
-  };
-
+const Header = ({ handleOnClick }) => {
   return (
     <StyledHeader>
       <StyledH1>TODO</StyledH1>

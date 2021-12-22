@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { AddTodo, Header, Footer, TaskList } from "./components/";
-import { GlobalContext, GlobalProvider } from "./context/GlobalState";
+import { ThemeContext, themes } from "./context/theme-context";
 
 const AppContainer = styled.div`
   font-family: "Josefin Sans", sans-serif;
@@ -66,20 +66,29 @@ function HeaderPhotos(darkmode) {
 }
 
 function App() {
-  const { darkmode } = useContext(GlobalContext);
+  const [theme, setTheme] = useState(themes.dark);
+
+  const handleOnClick = () => {
+    if (theme === themes.dark) {
+      setTheme(themes.light);
+    } else {
+      setTheme(themes.dark);
+    }
+  };
+
   return (
     <AppContainer>
-      <GlobalProvider>
-        {HeaderPhotos(darkmode)}
+      <ThemeContext.Provider>
+        {HeaderPhotos(themes.dark === theme)}
         <Container>
-          <Header />
+          <Header handleOnClick={handleOnClick} />
           <StyledMain>
             <AddTodo />
             <TaskList />
           </StyledMain>
         </Container>
         <Footer />
-      </GlobalProvider>
+      </ThemeContext.Provider>
     </AppContainer>
   );
 }

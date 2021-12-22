@@ -3,7 +3,6 @@ import AppReducer from "./AppReducer";
 
 const initialState = {
   tasks: [],
-  darkmode: true,
 };
 
 export const GlobalContext = createContext(initialState);
