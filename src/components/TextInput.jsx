@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const TaskInput = styled.input`
-  color: #ffffff;
+  color: ${(props) => props.textColor || "#ffffff"};
   border: none;
   background-color: transparent;
 
@@ -15,13 +15,14 @@ const TaskInput = styled.input`
   }
 `;
 
-const TextInput = ({ value, onChange, placeholder }) => {
+const TextInput = ({ value, onChange, placeholder, textColor }) => {
   return (
     <TaskInput
       type="text"
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      textColor={textColor}
     />
   );
 };

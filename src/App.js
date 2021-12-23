@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { AddTodo, Header, Footer, TaskList } from "./components/";
 import { ThemeContext, themes } from "./context/theme-context";
+import { GlobalProvider } from "./context/GlobalState";
 
 const AppContainer = styled.div`
   font-family: "Josefin Sans", sans-serif;
   color: #ffffff;
-  background-color: hsl(235, 21%, 11%);
+  background-color: ${(props) => props.backgroundColor || "hsl(235, 21%, 11%)"};
   height: 100vh;
   width: 100%;
 `;
@@ -77,18 +78,29 @@ function App() {
   };
 
   return (
-    <AppContainer>
-      <ThemeContext.Provider>
-        {HeaderPhotos(themes.dark === theme)}
-        <Container>
-          <Header handleOnClick={handleOnClick} />
-          <StyledMain>
-            <AddTodo />
-            <TaskList />
-          </StyledMain>
-        </Container>
-        <Footer />
-      </ThemeContext.Provider>
+    <AppContainer textColor={theme.text} backgroundColor={theme.background}>
+      <GlobalProvider>
+        <ThemeContext.Provider>
+          {HeaderPhotos(themes.dark === theme)}
+          <Container>
+            <Header
+              handleOnClick={handleOnClick}
+              darkmode={themes.dark === theme}
+            />
+            <StyledMain>
+              <AddTodo
+                backgroundColor={theme.foreground}
+                textColor={theme.text}
+              />
+              <TaskList
+                backgroundColor={theme.foreground}
+                textColor={theme.text}
+              />
+            </StyledMain>
+          </Container>
+          <Footer />
+        </ThemeContext.Provider>
+      </GlobalProvider>
     </AppContainer>
   );
 }

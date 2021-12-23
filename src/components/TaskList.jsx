@@ -9,7 +9,7 @@ import SortableListItem from "./SortableListItem";
 import ListFooter from "./ListFooter";
 
 const Container = styled.div`
-  background-color: hsl(235, 24%, 19%);
+  background-color: ${(props) => props.backgroundColor || "hsl(235, 24%, 19%)"};
   border-radius: 0.5em;
 `;
 
@@ -32,10 +32,11 @@ const TaskContainer = styled.div`
 
 const TaskText = styled.span`
   text-decoration: ${(props) => (props.isChecked ? "line-through" : "none")};
-  color: ${(props) => (props.isChecked ? "hsl(234, 11%, 52%)" : "#ffffff")};
+  opacity: ${(props) => (props.isChecked ? "30%" : "100%")};
+  color: ${(props) => props.textColor || "#ffffff"};
 `;
 
-const TaskList = () => {
+const TaskList = ({ backgroundColor, textColor }) => {
   const { tasks, updateTask } = useContext(GlobalContext);
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
@@ -62,7 +63,7 @@ const TaskList = () => {
   });
 
   return (
-    <Container>
+    <Container backgroundColor={backgroundColor}>
       <SortableContainer onSortEnd={onSortEnd}>
         {tasks.map((item, index) => (
           <SortableListItem key={item.id} index={index}>
@@ -71,7 +72,9 @@ const TaskList = () => {
                 onChange={() => handleChange(item.id)}
                 checked={item.isChecked}
               />
-              <TaskText isChecked={item.isChecked}>{item.text}</TaskText>
+              <TaskText isChecked={item.isChecked} textColor={textColor}>
+                {item.text}
+              </TaskText>
             </TaskContainer>
             <RemoveTodo item={item} />
           </SortableListItem>

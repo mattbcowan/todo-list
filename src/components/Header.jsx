@@ -13,12 +13,20 @@ const StyledH1 = styled.h1`
   padding-top: 1rem;
 `;
 
-const Header = ({ handleOnClick }) => {
+const Header = ({ handleOnClick, darkmode }) => {
   return (
     <StyledHeader>
       <StyledH1>TODO</StyledH1>
       <span>
-        <img src="./images/icon-sun.svg" alt="sun" onClick={handleOnClick} />
+        {darkmode ? (
+          <img src="./images/icon-sun.svg" alt="sun" onClick={handleOnClick} />
+        ) : (
+          <img
+            src="./images/icon-moon.svg"
+            alt="moon"
+            onClick={handleOnClick}
+          />
+        )}
       </span>
     </StyledHeader>
   );

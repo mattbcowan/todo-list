@@ -6,8 +6,8 @@ import { TextInput } from ".";
 const TaskContainer = styled.form`
   display: flex;
   padding: 1rem;
-  background-color: hsl(235, 24%, 19%);
-  color: #ffffff;
+  background-color: ${(props) => props.backgroundColor || "hsl(235, 24%, 19%)"};
+  color: ${(props) => props.textColor || "#ffffff"};
   border: none;
   border-radius: 0.5rem;
 `;
@@ -39,7 +39,7 @@ const generateId = () => {
   return Math.floor(1000 + Math.random() * 9000);
 };
 
-const AddTodo = () => {
+const AddTodo = ({ backgroundColor, textColor }) => {
   const [value, setValue] = useState({
     text: "",
     isChecked: false,
@@ -60,7 +60,7 @@ const AddTodo = () => {
   };
 
   return (
-    <TaskContainer onSubmit={handleSubmit}>
+    <TaskContainer onSubmit={handleSubmit} backgroundColor={backgroundColor}>
       <SubmitLabel htmlFor="addTodo">
         <img src="./images/icon-add.svg" alt="add symbol" />
       </SubmitLabel>
@@ -73,6 +73,7 @@ const AddTodo = () => {
       <TextInput
         value={value.text}
         onChange={handleChange}
+        textColor={textColor}
         placeholder="Create a new todo..."
       />
     </TaskContainer>
