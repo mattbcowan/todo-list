@@ -80,7 +80,7 @@ function App() {
   return (
     <AppContainer textColor={theme.text} backgroundColor={theme.background}>
       <GlobalProvider>
-        <ThemeContext.Provider>
+        <ThemeContext.Provider value={theme}>
           {HeaderPhotos(themes.dark === theme)}
           <Container>
             <Header

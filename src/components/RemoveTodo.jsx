@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { GlobalContext } from "../context/GlobalState";
 
-const RemoveButton = styled.button`
+const RemoveButton = styled.input`
   background-color: transparent;
   border: none;
   color: hsl(234, 11%, 52%);
@@ -22,9 +22,13 @@ const RemoveTodo = (props) => {
   };
 
   return (
-    <RemoveButton onClick={handleClick}>
-      <img src="./images/icon-cross.svg" alt="close" />
-    </RemoveButton>
+    <RemoveButton
+      type="image"
+      name="remove button"
+      onClick={handleClick}
+      src="./images/icon-cross.svg"
+      alt="close"
+    />
   );
 };
 
