@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { AddTodo, Header, Footer, TaskList } from "./components/";
+import { Header, Footer, TaskList } from "./components/";
+import AddTodo from "./components/AddTodo/AddTodo";
 import { ThemeContext, themes } from "./context/theme-context";
 import { GlobalProvider } from "./context/GlobalState";
 

@@ -1,8 +1,25 @@
-import AddTodo from "./AddTodo";
-import Checkbox from "./Checkbox";
-import Header from "./Header";
-import Footer from "./Footer";
-import TextInput from "./TextInput";
-import TaskList from "./TaskList";
+import Checkbox from "./Checkbox/Checkbox";
+import AddTodo from "./AddTodo/AddTodo";
+import Task from "./Task/Task";
+import TaskText from "./TaskText/TaskText";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+import TextInput from "./TextInput/TextInput";
+import RemoveTodo from "./RemoveTodo/RemoveTodo";
+import ListFooter from "./ListFooter/ListFooter";
+import SortableArray from "./SortableArray/SortableArray";
+import TaskList from "./TaskList/TaskList";
 
-export { AddTodo, Checkbox, Header, Footer, TaskList, TextInput };
+export {
+  AddTodo,
+  ListFooter,
+  SortableArray,
+  Task,
+  TaskText,
+  Checkbox,
+  RemoveTodo,
+  Header,
+  Footer,
+  TaskList,
+  TextInput,
+};

@@ -1,15 +1,6 @@
 import { useContext } from "react";
-import styled from "styled-components";
-import { GlobalContext } from "../context/GlobalState";
-
-const RemoveButton = styled.input`
-  background-color: transparent;
-  border: none;
-  color: hsl(234, 11%, 52%);
-  margin-left: 0.5rem;
-  z-index: 10;
-  cursor: pointer;
-`;
+import { GlobalContext } from "../../context/GlobalState";
+import { RemoveButton } from "./styles";
 
 const RemoveTodo = (props) => {
   const { item } = props;

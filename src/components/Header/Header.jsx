@@ -1,17 +1,4 @@
-import styled from "styled-components";
-
-const StyledHeader = styled.header`
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-`;
-
-const StyledH1 = styled.h1`
-  letter-spacing: 1rem;
-  padding-top: 1rem;
-`;
+import { StyledHeader, StyledH1 } from "./styles";
 
 const Header = ({ handleOnClick, darkmode }) => {
   return (

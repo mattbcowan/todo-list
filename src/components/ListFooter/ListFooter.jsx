@@ -1,25 +1,9 @@
 import { useContext } from "react";
-import styled from "styled-components";
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalState";
+import { ListItem, ClearButton } from "./styles";
 
-const ListItem = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  padding: 1.5em 1em;
-  color: hsl(234, 11%, 52%);
-`;
-
-const ClearButton = styled.button`
-  background: transparent;
-  border: none;
-  color: hsl(234, 11%, 52%);
-  cursor: pointer;
-`;
-
-const ListFooter = ({ tasks }) => {
-  const { clearCompletedTasks } = useContext(GlobalContext);
+const ListFooter = () => {
+  const { tasks, clearCompletedTasks } = useContext(GlobalContext);
 
   const ItemsLeft = (items) => {
     if (items.length > 1) {
