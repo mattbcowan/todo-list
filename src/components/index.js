@@ -9,6 +9,7 @@ import RemoveTodo from "./RemoveTodo/RemoveTodo";
 import ListFooter from "./ListFooter/ListFooter";
 import SortableArray from "./SortableArray/SortableArray";
 import TaskList from "./TaskList/TaskList";
+import Filter from "./Filter/Filter";
 
 export {
   AddTodo,
@@ -22,4 +23,5 @@ export {
   Footer,
   TaskList,
   TextInput,
+  Filter,
 };
