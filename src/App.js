@@ -41,10 +41,10 @@ function HeaderPhotos(darkmode) {
       <HeaderImage>
         <source
           media="(min-width: 800px)"
-          srcSet="/images/bg-desktop-dark.jpg"
+          srcSet="./images/bg-desktop-dark.jpg"
         />
         <img
-          src="/images/bg-mobile-dark.jpg"
+          src="./images/bg-mobile-dark.jpg"
           alt="mobile dark background"
           aria-hidden="true"
         />
@@ -55,10 +55,10 @@ function HeaderPhotos(darkmode) {
       <HeaderImage>
         <source
           media="(min-width: 800px)"
-          srcSet="/images/bg-desktop-light.jpg"
+          srcSet="./images/bg-desktop-light.jpg"
         />
         <img
-          src="/images/bg-mobile-light.jpg"
+          src="./images/bg-mobile-light.jpg"
           alt="mobile light background"
           aria-hidden="true"
         />
