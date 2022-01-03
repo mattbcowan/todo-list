@@ -41,11 +41,11 @@ function HeaderPhotos(darkmode) {
       <HeaderImage>
         <source
           media="(min-width: 800px)"
-          srcSet="./images/bg-desktop-dark.jpg"
+          srcSet="https://mattbcowan.github.io/todo-list/images/bg-desktop-dark.jpg"
         />
         <img
-          src="./images/bg-mobile-dark.jpg"
-          alt="mobile dark background"
+          src="https://mattbcowan.github.io/todo-list/images/bg-mobile-dark.jpg"
+          alt="dark background"
           aria-hidden="true"
         />
       </HeaderImage>
@@ -55,11 +55,11 @@ function HeaderPhotos(darkmode) {
       <HeaderImage>
         <source
           media="(min-width: 800px)"
-          srcSet="./images/bg-desktop-light.jpg"
+          srcSet="https://mattbcowan.github.io/todo-list/images/bg-desktop-light.jpg"
         />
         <img
-          src="./images/bg-mobile-light.jpg"
-          alt="mobile light background"
+          src="https://mattbcowan.github.io/todo-list/images/bg-mobile-light.jpg"
+          alt="light background"
           aria-hidden="true"
         />
       </HeaderImage>
