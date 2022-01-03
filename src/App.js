@@ -98,7 +98,6 @@ function App() {
                 textColor={theme.text}
               />
             </StyledMain>
-            <Filter />
           </Container>
           <Footer />
         </ThemeContext.Provider>
